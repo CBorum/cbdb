@@ -15,3 +15,8 @@ value: 123
 ```
 
 ## Docker
+```bash
+$ git clone https://github.com/CBorum/cbdb.git
+$ cd cbdb
+$ docker run -it --rm -v $(pwd):/go/src/github.com/cborum/cbdb -w /go/src/github.com/cborum/cbdb golang:alpine sh -c "go run cmd/cbdbwrite/main.go abc 123; go run cmd/cbdbread/main.go abc"
+```

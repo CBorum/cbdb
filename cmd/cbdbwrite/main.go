@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -28,7 +29,5 @@ func main() {
 		return
 	}
 
-	log.Println("written", os.Args[0], os.Args[1])
-	log.Println(db.CurrentOffset)
-	log.Println(db.HashIndex)
+	fmt.Println("written", key, value)
 }

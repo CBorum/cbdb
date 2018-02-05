@@ -83,13 +83,11 @@ func (db *Database) Read(key string) (value string, err error) {
 	if index, ok := db.HashIndex[key]; ok {
 		var read string
 		read, err = db.LogRead(index.Offset, index.Length)
-		log.Println(read)
 		if !strings.Contains(read, ",") {
 			err = errors.New("no value found")
 			return
 		}
 		value = strings.SplitN(read, ",", 2)[1]
-		value = strings.TrimSuffix(value, "\n")
 		return
 	}
 	err = errors.New("key not found")
@@ -105,11 +103,10 @@ func (db *Database) LogRead(offset int64, len int) (val string, err error) {
 	}
 
 	readBytes := make([]byte, len)
-	n, err := file.ReadAt(readBytes, offset)
+	_, err = file.ReadAt(readBytes, offset)
 	if err != nil {
 		return
 	}
-	log.Println("n", n)
 
 	decVal := bytes.NewBuffer(readBytes)
 	dec := gob.NewDecoder(decVal)

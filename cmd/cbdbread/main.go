@@ -1,9 +1,11 @@
 package main
 
 import (
-	"github.com/cborum/cbdb"
+	"fmt"
 	"log"
 	"os"
+
+	"github.com/cborum/cbdb"
 )
 
 // Read
@@ -27,7 +29,5 @@ func main() {
 		return
 	}
 
-	log.Println("value:", value)
-	log.Println(db.CurrentOffset)
-	log.Println(db.HashIndex)
+	fmt.Println("value:", value)
 }
