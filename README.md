@@ -1,3 +1,6 @@
+# Description
+My implementation has two binaries that respectively write to and read from the db. 
+
 # Usage
 ## In Go environment
 if you have Go and paths setup correctly, else skip to Docker
@@ -18,5 +21,14 @@ value: 123
 ```bash
 $ git clone https://github.com/CBorum/cbdb.git
 $ cd cbdb
-$ docker run -it --rm -v $(pwd):/go/src/github.com/cborum/cbdb -w /go/src/github.com/cborum/cbdb golang:alpine sh -c "go run cmd/cbdbwrite/main.go abc 123; go run cmd/cbdbread/main.go abc"
+```
+
+Write:
+```bash
+docker run -it --rm -v $(pwd):/go/src/github.com/cborum/cbdb -w /go/src/github.com/cborum/cbdb golang:alpine sh -c "go run cmd/cbdbwrite/main.go abc 123"
+```
+
+Read:
+```bash
+docker run -it --rm -v $(pwd):/go/src/github.com/cborum/cbdb -w /go/src/github.com/cborum/cbdb golang:alpine sh -c "go run cmd/cbdbread/main.go abc"
 ```
