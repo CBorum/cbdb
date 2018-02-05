@@ -1,5 +1,8 @@
 # Description
 My implementation has two binaries that respectively write to and read from the db. 
+On writes the key and value is binary encoded and appended to a database file, afterwards recognizing how many bytes was written and saving the offset and length of the content in a hashmap on the key value.
+When reading, the key provided is searched for in the in-memory hashmap, returning the offset and how many bytes that should be read.
+On every write the Database struct is persisted to an index file, which also contains the currect byte offset.
 
 # Usage
 ## In Go environment
